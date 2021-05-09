@@ -19,7 +19,7 @@ object PortFolioApi extends GenericSchema[GetUserService] {
         Queries(
           GetUserService.findUsers,
           args => GetUserService.findUser(args.id),
-          GetUserService.findSkill
+          GetUserService.findSkills
         )
       )
     )

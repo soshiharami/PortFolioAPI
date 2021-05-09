@@ -9,7 +9,7 @@ object GetUserService {
 
     def findByUserId(id: Int): UIO[Option[UserSchema]]
 
-    def findSkill: UIO[Seq[Skill]]
+    def findSkills: UIO[Seq[Skill]]
   }
 
   def findUsers: URIO[GetUserService, Seq[UserSchema]] =
@@ -18,17 +18,17 @@ object GetUserService {
   def findUser(id: Int): URIO[GetUserService, Option[UserSchema]] =
     URIO.accessM(_.get.findByUserId(id))
 
-  def findSkill: URIO[GetUserService, Seq[Skill]] =
-    URIO.accessM(_.get.findSkill)
+  def findSkills: URIO[GetUserService, Seq[Skill]] =
+    URIO.accessM(_.get.findSkills)
 
   def make(
       initial: Seq[UserSchema] = sample,
-      skillquery: Seq[Skill] = skill
+      skills: Seq[Skill] = skill
   ): ZLayer[Any, Nothing, GetUserService] =
     ZLayer.fromEffect {
       for {
         users <- Ref.make(initial)
-        skillquery <- Ref.make(skillquery)
+        skills <- Ref.make(skills)
       } yield new Service {
 
         def findUsers: UIO[Seq[UserSchema]] = users.get
@@ -36,7 +36,7 @@ object GetUserService {
         def findByUserId(id: Int): UIO[Option[UserSchema]] =
           users.get.map(_.find(c => c.id == id))
 
-        override def findSkill: UIO[Seq[Skill]] = skillquery.get
+        override def findSkills: UIO[Seq[Skill]] = skills.get
       }
     }
 }
