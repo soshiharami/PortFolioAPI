@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sbt: de.heikoseeberger:akka-http-circe_2.13:1.36.0:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/de/heikoseeberger/akka-http-circe_2.13/1.36.0/akka-http-circe_2.13-1.36.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/de/heikoseeberger/akka-http-circe_2.13/1.36.0/akka-http-circe_2.13-1.36.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/de/heikoseeberger/akka-http-circe_2.13/1.36.0/akka-http-circe_2.13-1.36.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
