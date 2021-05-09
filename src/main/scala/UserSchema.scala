@@ -12,6 +12,7 @@ case class Skill(id: Int, name: String, types: SkillType)
 case class SkillType(id: Int, name: String)
 case class Contact(id: Int, url: String, name: String)
 case class UserIdArgs(id: Int) extends AnyVal
+case class SkillTypeArgs(Type: String) extends AnyVal
 
 object Users {
 

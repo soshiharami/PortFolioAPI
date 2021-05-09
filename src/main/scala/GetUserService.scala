@@ -10,6 +10,8 @@ object GetUserService {
     def findByUserId(id: Int): UIO[Option[UserSchema]]
 
     def findSkills: UIO[Seq[Skill]]
+
+    def findBySkillType(Type: String): UIO[Seq[Skill]]
   }
 
   def findUsers: URIO[GetUserService, Seq[UserSchema]] =
@@ -20,6 +22,9 @@ object GetUserService {
 
   def findSkills: URIO[GetUserService, Seq[Skill]] =
     URIO.accessM(_.get.findSkills)
+
+  def findBySkill(Type: String): URIO[GetUserService, Seq[Skill]] =
+    URIO.accessM(_.get.findBySkillType(Type))
 
   def make(
       initial: Seq[UserSchema] = sample,
@@ -36,7 +41,10 @@ object GetUserService {
         def findByUserId(id: Int): UIO[Option[UserSchema]] =
           users.get.map(_.find(c => c.id == id))
 
-        override def findSkills: UIO[Seq[Skill]] = skills.get
+        def findSkills: UIO[Seq[Skill]] = skills.get
+
+        def findBySkillType(Type: String): UIO[Seq[Skill]] =
+          skills.get.map(_.filter(c => c.types.name == Type))
       }
     }
 }
