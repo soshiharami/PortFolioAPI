@@ -1,4 +1,4 @@
-import Users.skills
+import Users.{me, skills}
 import zio.{Has, Ref, UIO, URIO, ZLayer}
 
 object GetUserService {
@@ -8,6 +8,8 @@ object GetUserService {
     def findSkills: UIO[Seq[Skill]]
 
     def findBySkillType(Type: String): UIO[Seq[Skill]]
+
+    def findMe: UIO[Seq[Me]]
   }
 
   def findSkills: URIO[GetUserService, Seq[Skill]] =
@@ -16,18 +18,26 @@ object GetUserService {
   def findBySkill(Type: String): URIO[GetUserService, Seq[Skill]] =
     URIO.accessM(_.get.findBySkillType(Type))
 
+  def findMe: URIO[GetUserService, Seq[Me]] =
+    URIO.accessM(_.get.findMe)
+
   def make(
-      skills: Seq[Skill] = skills
+      skills: Seq[Skill] = skills,
+      me: Seq[Me] = me
   ): ZLayer[Any, Nothing, GetUserService] =
     ZLayer.fromEffect {
       for {
         skills <- Ref.make(skills)
+        me <- Ref.make(me)
       } yield new Service {
 
         def findSkills: UIO[Seq[Skill]] = skills.get
 
         def findBySkillType(Type: String): UIO[Seq[Skill]] =
           skills.get.map(_.filter(c => c.types.name == Type))
+
+        override def findMe: UIO[Seq[Me]] =
+          me.get
       }
     }
 }

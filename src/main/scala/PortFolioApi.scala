@@ -10,14 +10,16 @@ import scala.language.postfixOps
 object PortFolioApi extends GenericSchema[GetUserService] {
   case class Queries(
       skills: URIO[GetUserService, Seq[Skill]],
-      skill: SkillTypeArgs => URIO[GetUserService, Seq[Skill]]
+      skill: SkillTypeArgs => URIO[GetUserService, Seq[Skill]],
+      me: URIO[GetUserService, Seq[Me]]
   )
   val api: GraphQL[Console with Clock with GetUserService] =
     graphQL(
       RootResolver(
         Queries(
           GetUserService.findSkills,
-          args => GetUserService.findBySkill(args.Type)
+          args => GetUserService.findBySkill(args.Type),
+          GetUserService.findMe
         )
       )
     )

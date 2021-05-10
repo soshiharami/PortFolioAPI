@@ -17,16 +17,15 @@ case class SkillTypeArgs(Type: String) extends AnyVal
 
 object Users {
 
-  val me = Seq(
-    Me(
-      name = "soshi",
-      about = "2003年8月7日生まれの千葉県の学生\n趣味はゲームとプログラミング",
-      age = (new SimpleDateFormat("YYYY").format(new Date()).toInt - 2003).toString,
-      skills = skills,
-      histories = null,
-      contact = null
-    )
+  val contact = Seq(
+    Contact(id = 1, url = "https://twitter.com/soshi_harami", name = "Twitter"),
+    Contact(id = 2, url = "https://github.com/soshiharami", name = "GitHub"),
+    Contact(id = 3, url = "https://lapras.com/person", name = "Lapras"),
+    Contact(id = 4, url = "https://jp.pornhub.com/users/i_want_big_penisu", name = "Pornhub"),
+    Contact(id = 5, url = "https://qiita.com/soshi_harami", name = "Qiita"),
+    Contact(id = 6, url = "https://approvers.dev/", name = "限界開発鯖"),
   )
+
 
   val skillType = Seq(
     SkillType(id = 1, name = "FrontEnd"),
@@ -154,7 +153,7 @@ object Users {
     ),
     Skill(
       id = 24,
-      name = "IOS",
+      name = "iOS",
       types = skillType.find(_.name == "OS").get
     ),
     Skill(
@@ -166,6 +165,21 @@ object Users {
       id = 26,
       name = "PC",
       types = skillType.find(_.name == "Other").get
+    )
+  )
+
+  val me = Seq(
+    Me(
+      name = "soshi",
+      about = "2003年8月7日生まれの千葉県の学生\n趣味はゲームとプログラミング",
+      age = (new SimpleDateFormat("YYYY").format(new Date()).toInt - 2003).toString,
+      skills = skills,
+      histories = Seq(
+        History(id = 1, time = "a", title = "adfd", about = "a")
+      ),
+      contact = Seq(
+        Contact(id = 1, url = "a", name = "aa")
+      )
     )
   )
 }
