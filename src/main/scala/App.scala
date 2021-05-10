@@ -13,12 +13,17 @@ import scala.concurrent.ExecutionContextExecutor
 
 object ExampleApp extends App with AkkaHttpCirceAdapter {
 
-  implicit val system: ActorSystem[String] = ActorSystem(Behaviors.empty[String], "example-app")
+  implicit val system: ActorSystem[String] =
+    ActorSystem(Behaviors.empty[String], "example-app")
 
-  implicit val executionContext: ExecutionContextExecutor = system.executionContext
+  implicit val executionContext: ExecutionContextExecutor =
+    system.executionContext
 
   implicit val runtime: Runtime[GetUserService with Console with Clock] =
-    Runtime.unsafeFromLayer(GetUserService.make() ++ Console.live ++ Clock.live, Platform.default)
+    Runtime.unsafeFromLayer(
+      GetUserService.make() ++ Console.live ++ Clock.live,
+      Platform.default
+    )
 
   val interpreter = runtime.unsafeRun(PortFolioApi.api.interpreter)
 

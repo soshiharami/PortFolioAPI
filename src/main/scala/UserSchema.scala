@@ -1,10 +1,13 @@
+import java.text.SimpleDateFormat
+import java.util.Date
+
 case class Me(
     name: String,
     about: String,
     age: String,
-    skills: Array[Skill],
-    histories: Array[History],
-    contact: Array[Contact]
+    skills: Seq[Skill],
+    histories: Seq[History],
+    contact: Seq[Contact]
 )
 case class History(id: Int, time: String, title: String, about: String)
 case class Skill(id: Int, name: String, types: SkillType)
@@ -15,14 +18,14 @@ case class SkillTypeArgs(Type: String) extends AnyVal
 object Users {
 
   val me = Seq(
-    /* Me(
+    Me(
       name = "soshi",
       about = "2003年8月7日生まれの千葉県の学生\n趣味はゲームとプログラミング",
-      age = "18",
-      skills = ,
-      histories = ???,
-      contact = ???
-    ) */
+      age = (new SimpleDateFormat("YYYY").format(new Date()).toInt - 2003).toString,
+      skills = skills,
+      histories = null,
+      contact = null
+    )
   )
 
   val skillType = Seq(
@@ -33,7 +36,7 @@ object Users {
     SkillType(id = 5, name = "Other")
   )
 
-  val skill = Seq(
+  val skills = Seq(
     Skill(
       id = 1,
       name = "TypeScript",
@@ -154,6 +157,15 @@ object Users {
       name = "IOS",
       types = skillType.find(_.name == "OS").get
     ),
+    Skill(
+      id = 25,
+      name = "functional programming",
+      types = skillType.find(_.name == "Other").get
+    ),
+    Skill(
+      id = 26,
+      name = "PC",
+      types = skillType.find(_.name == "Other").get
+    )
   )
-
 }

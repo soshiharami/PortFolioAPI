@@ -1,4 +1,4 @@
-import Users.skill
+import Users.skills
 import zio.{Has, Ref, UIO, URIO, ZLayer}
 
 object GetUserService {
@@ -17,7 +17,7 @@ object GetUserService {
     URIO.accessM(_.get.findBySkillType(Type))
 
   def make(
-      skills: Seq[Skill] = skill
+      skills: Seq[Skill] = skills
   ): ZLayer[Any, Nothing, GetUserService] =
     ZLayer.fromEffect {
       for {
