@@ -12,7 +12,7 @@ object PortFolioApi extends GenericSchema[GetUserService] {
       skills: URIO[GetUserService, Seq[Skill]],
       skill: SkillTypeArgs => URIO[GetUserService, Seq[Skill]],
       me: URIO[GetUserService, Seq[Me]],
-      contact: URIO[GetUserService, Seq[Contact]]
+      contacts: URIO[GetUserService, Seq[Contact]]
   )
   val api: GraphQL[Console with Clock with GetUserService] =
     graphQL(
@@ -21,7 +21,7 @@ object PortFolioApi extends GenericSchema[GetUserService] {
           GetUserService.findSkills,
           args => GetUserService.findBySkill(args.Type),
           GetUserService.findMe,
-          GetUserService.findContact
+          GetUserService.findContacts
         )
       )
     )

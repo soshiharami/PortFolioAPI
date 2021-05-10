@@ -17,7 +17,7 @@ case class SkillTypeArgs(Type: String) extends AnyVal
 
 object Users {
 
-  val contact = Seq(
+  val contacts = Seq(
     Contact(id = 1, url = "https://twitter.com/soshi_harami", name = "Twitter"),
     Contact(id = 2, url = "https://github.com/soshiharami", name = "GitHub"),
     Contact(id = 3, url = "https://lapras.com/public/ELLYVRF", name = "Lapras"),
@@ -176,9 +176,7 @@ object Users {
       histories = Seq(
         History(id = 1, time = "a", title = "adfd", about = "a")
       ),
-      contact = Seq(
-        Contact(id = 1, url = "a", name = "aa")
-      )
+      contact = contacts
     )
   )
 }
