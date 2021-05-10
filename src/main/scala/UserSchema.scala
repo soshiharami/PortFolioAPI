@@ -114,6 +114,46 @@ object Users {
       id = 16,
       name = "Scala",
       types = skillType.find(_.name == "OtherPrograming").get
+    ),
+    Skill(
+      id = 17,
+      name = "Python",
+      types = skillType.find(_.name == "OtherPrograming").get
+    ),
+    Skill(
+      id = 18,
+      name = "Java",
+      types = skillType.find(_.name == "OtherPrograming").get
+    ),
+    Skill(
+      id = 19,
+      name = "MinecraftPlugin & Mod",
+      types = skillType.find(_.name == "OtherPrograming").get
+    ),
+    Skill(
+      id = 20,
+      name = "Windows",
+      types = skillType.find(_.name == "OS").get
+    ),
+    Skill(
+      id = 21,
+      name = "Arch Linux",
+      types = skillType.find(_.name == "OS").get
+    ),
+    Skill(
+      id = 22,
+      name = "Alter Linux",
+      types = skillType.find(_.name == "OS").get
+    ),
+    Skill(
+      id = 23,
+      name = "Ubuntu",
+      types = skillType.find(_.name == "OS").get
+    ),
+    Skill(
+      id = 24,
+      name = "IOS",
+      types = skillType.find(_.name == "OS").get
     )
   )
 
