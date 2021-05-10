@@ -30,8 +30,7 @@ object Users {
     SkillType(id = 2, name = "BackEnd"),
     SkillType(id = 3, name = "OtherPrograming"),
     SkillType(id = 4, name = "OS"),
-    SkillType(id = 5, name = "PC"),
-    SkillType(id = 6, name = "Other")
+    SkillType(id = 5, name = "Other")
   )
 
   val skill = Seq(
@@ -154,7 +153,7 @@ object Users {
       id = 24,
       name = "IOS",
       types = skillType.find(_.name == "OS").get
-    )
+    ),
   )
 
 }
