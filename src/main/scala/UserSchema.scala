@@ -20,10 +20,9 @@ object Users {
   val contact = Seq(
     Contact(id = 1, url = "https://twitter.com/soshi_harami", name = "Twitter"),
     Contact(id = 2, url = "https://github.com/soshiharami", name = "GitHub"),
-    Contact(id = 3, url = "https://lapras.com/person", name = "Lapras"),
-    Contact(id = 4, url = "https://jp.pornhub.com/users/i_want_big_penisu", name = "Pornhub"),
-    Contact(id = 5, url = "https://qiita.com/soshi_harami", name = "Qiita"),
-    Contact(id = 6, url = "https://approvers.dev/", name = "限界開発鯖"),
+    Contact(id = 3, url = "https://lapras.com/public/ELLYVRF", name = "Lapras"),
+    Contact(id = 4, url = "https://qiita.com/soshi_harami", name = "Qiita"),
+    Contact(id = 5, url = "https://approvers.dev/", name = "限界開発鯖"),
   )
 
 
