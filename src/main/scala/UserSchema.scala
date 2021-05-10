@@ -1,4 +1,3 @@
-case class UserSchema(id: Int, name: String)
 case class Me(
     name: String,
     about: String,
@@ -11,15 +10,9 @@ case class History(id: Int, time: String, title: String, about: String)
 case class Skill(id: Int, name: String, types: SkillType)
 case class SkillType(id: Int, name: String)
 case class Contact(id: Int, url: String, name: String)
-case class UserIdArgs(id: Int) extends AnyVal
 case class SkillTypeArgs(Type: String) extends AnyVal
 
 object Users {
-
-  val sample = Seq(
-    UserSchema(1, "name1"),
-    UserSchema(2, "name2")
-  )
 
   val me = Seq(
     /* Me(

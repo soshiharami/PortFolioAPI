@@ -9,8 +9,6 @@ import zio.console.Console
 import scala.language.postfixOps
 object PortFolioApi extends GenericSchema[GetUserService] {
   case class Queries(
-      users: URIO[GetUserService, Seq[UserSchema]],
-      user: UserIdArgs => URIO[GetUserService, Option[UserSchema]],
       skills: URIO[GetUserService, Seq[Skill]],
       skill: SkillTypeArgs => URIO[GetUserService, Seq[Skill]]
   )
@@ -18,8 +16,6 @@ object PortFolioApi extends GenericSchema[GetUserService] {
     graphQL(
       RootResolver(
         Queries(
-          GetUserService.findUsers,
-          args => GetUserService.findUser(args.id),
           GetUserService.findSkills,
           args => GetUserService.findBySkill(args.Type)
         )
