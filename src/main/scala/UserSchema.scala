@@ -22,9 +22,8 @@ object Users {
     Contact(id = 2, url = "https://github.com/soshiharami", name = "GitHub"),
     Contact(id = 3, url = "https://lapras.com/public/ELLYVRF", name = "Lapras"),
     Contact(id = 4, url = "https://qiita.com/soshi_harami", name = "Qiita"),
-    Contact(id = 5, url = "https://approvers.dev/", name = "限界開発鯖"),
+    Contact(id = 5, url = "https://approvers.dev/", name = "限界開発鯖")
   )
-
 
   val skillType = Seq(
     SkillType(id = 1, name = "FrontEnd"),
@@ -167,15 +166,49 @@ object Users {
     )
   )
 
+  val histories = Seq(
+    History(id = 1, time = "2003/08/07", title = "誕生", about = "千葉県にて誕生"),
+    History(
+      id = 2,
+      time = "2017/08/18",
+      title = "留学",
+      about = "オーストラリア メルボルンにて短期留学"
+    ),
+    History(
+      id = 3,
+      time = "2019/04/05",
+      title = "高専入学",
+      about = "国立木更津工業高等専門学校の情報工学科に入学"
+    ),
+    History(
+      id = 4,
+      time = "2020/03/01",
+      title = "限界開発鯖に参加",
+      about = "このタイミングでプログラミングを本格的にスタート"
+    ),
+    History(
+      id = 5,
+      time = "2020/06/01",
+      title = "Scalaを始める",
+      about = "関数型言語を知り、Scalaを始める"
+    ),
+    History(
+      id = 6,
+      time = "2020/10/01",
+      title = "仕事を始める",
+      about = "株式会社 C-Style で業務委託という形で業務を開始"
+    ),
+    History(id = 7, time = "2021/04/05", title = "高専プロコン", about = "高専プロコンに出場")
+  )
+
   val me = Seq(
     Me(
       name = "soshi",
       about = "2003年8月7日生まれの千葉県の学生\n趣味はゲームとプログラミング",
-      age = (new SimpleDateFormat("YYYY").format(new Date()).toInt - 2003).toString,
+      age =
+        (new SimpleDateFormat("YYYY").format(new Date()).toInt - 2003).toString,
       skills = skills,
-      histories = Seq(
-        History(id = 1, time = "a", title = "adfd", about = "a")
-      ),
+      histories = histories,
       contact = contacts
     )
   )
