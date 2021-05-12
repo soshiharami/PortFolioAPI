@@ -1,4 +1,4 @@
-import Users.{contacts, me, skills}
+import Users.{contacts, me, skills, histories}
 import zio.{Has, Ref, UIO, URIO, ZLayer}
 
 object GetUserService {
@@ -12,6 +12,8 @@ object GetUserService {
     def findMe: UIO[Seq[Me]]
 
     def findContacts: UIO[Seq[Contact]]
+
+    def findHistories: UIO[Seq[History]]
   }
 
   def findSkills: URIO[GetUserService, Seq[Skill]] =
@@ -26,16 +28,21 @@ object GetUserService {
   def findContacts: URIO[GetUserService, Seq[Contact]] =
     URIO.accessM(_.get.findContacts)
 
+  def findHistories: URIO[GetUserService, Seq[History]] =
+    URIO.accessM(_.get.findHistories)
+
   def make(
       skills: Seq[Skill] = skills,
       me: Seq[Me] = me,
-      contacts: Seq[Contact] = contacts
+      contacts: Seq[Contact] = contacts,
+      histories: Seq[History] = histories
   ): ZLayer[Any, Nothing, GetUserService] =
     ZLayer.fromEffect {
       for {
         skills <- Ref.make(skills)
         me <- Ref.make(me)
         contact <- Ref.make(contacts)
+        histories <- Ref.make(histories)
       } yield new Service {
 
         def findSkills: UIO[Seq[Skill]] = skills.get
@@ -47,6 +54,9 @@ object GetUserService {
           me.get
 
         override def findContacts: UIO[Seq[Contact]] = contact.get
+
+        override def findHistories: UIO[Seq[History]] = histories.get
+
       }
     }
 }
