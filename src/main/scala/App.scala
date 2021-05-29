@@ -31,7 +31,7 @@ object ExampleApp extends App with AkkaHttpCirceAdapter {
     adapter.makeHttpService(interpreter)
   }
 
-  val bindingFuture = Http().newServerAt("localhost", 8088).bind(route)
+  val bindingFuture = Http().newServerAt("0.0.0.0", 8088).bind(route)
 
   sys.addShutdownHook {
     bindingFuture
