@@ -76,5 +76,6 @@ libraryDependencies ++= Seq(
   "com.softwaremill.sttp.tapir" %% "tapir-json-circe" % "0.17.18",
   "io.circe" %% "circe-generic" % "0.13.0",
   "com.typesafe.play" %% "play-akka-http-server" % "2.8.8",
-  "com.typesafe.akka" %% "akka-actor-typed" % "2.6.14"
+  "com.typesafe.akka" %% "akka-actor-typed" % "2.6.14",
+  "ch.megard" %% "akka-http-cors" % "1.1.1"
 )
