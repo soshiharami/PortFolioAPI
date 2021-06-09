@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  api:
+    image: hseeberger/scala-sbt:graalvm-ce-21.1.0-java11_1.5.2_2.13.5
+    command: sbt run
+    volumes: [".:/work", ".:/root"]
+    restart: always
+    ports: ["8088:8088"]
+    expose: ["8088"]
+    environment:
+      VIRTUAL_PORT: 8088
+      VIRTUAL_HOST: "portfolioapi.soshiharami.com"
+      LETSENCRYPT_HOST: "portfolioapi.soshiharami.com"
+      LETSENCRYPT_EMAIL: "soshi@soshiharami.com"
+    network_mode: "bridge"
+
