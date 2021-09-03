@@ -163,6 +163,21 @@ object Users {
       id = 26,
       name = "PC",
       types = skillType.find(_.name == "Other").get
+    ),
+    Skill(
+      id = 27,
+      name = "Proxmox",
+      types = skillType.find(_.name == "OS").get
+    ),
+    Skill(
+      id = 28,
+      name = "MineOS",
+      types = skillType.find(_.name == "OS").get
+    ),
+    Skill(
+      id = 29,
+      name = "Go",
+      types = skillType.find(_.name == "OtherPrograming").get
     )
   )
 
